@@ -1,6 +1,11 @@
 import stockquotes
 import json
 
+def pada(string, length):
+    string = str(string)
+    string = string + ' '*(length - len(string))
+    return string
+
 def pad(string, length):
     string = str(string)
     string = ' '*(length - len(string)) + string
@@ -30,18 +35,25 @@ for stock in portfolio.keys():
 
 total = sum([ i[1]*i[2] for i in portfolio_data ]) + cash
 
-longest_percent = 3
+longest_qty = 3
 for stock in portfolio_data:
-    length = len(str(round(((stock[1]*stock[2])/total)*100)))
-    longest_percent = length if length > longest_percent else longest_percent
+    length = len(money(stock[1]))
+    longest_qty = length if length > longest_qty else longest_qty
 
-print('Stock        Qty    Last   Total  %Total')
-print('-'*8*5)
+longest_stock = 5
 for stock in portfolio_data:
-    print('{}\t{}{}{}{}%'.format(
-        stock[0],
-        pad(stock[1], 8),
-        pad(money(stock[2]), 8),
+    length = len(stock[0])
+    longest_stock = length if length > longest_stock else longest_stock
+
+header = '│{}│{}│    Last   Total  %Total│'.format(pada('Stock', longest_stock), pad('Qty', longest_qty))
+print('┌{}┐'.format('─' * (len(header)-2)))
+print(header)
+print('├{}┤'.format('─' * (len(header)-2)))
+for stock in portfolio_data:
+    print('{}|{}|{}|{}|{}%'.format(
+        pada(stock[0], longest_stock),
+        pad(stock[1], longest_qty),
+        pad(money(stock[2]), longest_qty + 1),
         pad(money(stock[1]*stock[2]), 8),
         pad(round((stock[1]*stock[2])/total * 100), 7)
     ))
