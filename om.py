@@ -1,6 +1,5 @@
 import stockquotes
 import json
-import threading
 simple_graphics = False 
 if simple_graphics:
     _print = print
@@ -42,26 +41,15 @@ def money(amount):
 with open('portfolio.json') as f:
     portfolio = json.load(f)
 
-def get_stock(stock, portfolio_data):
-    stock_data = stockquotes.Stock(stock)
-    portfolio_data.append([stock, portfolio[stock], stock_data.currentPrice])
-
 portfolio_data = []
-threads = []
 for stock in portfolio.keys():
     if portfolio[stock] == 0:
         continue
     elif stock == 'CASH':
         cash = portfolio[stock]
     else:
-        t = threading.Thread(target=get_stock, args=(stock, portfolio_data,))
-        threads.append(t)
-        t.start()
-
-for t in threads:
-    t.join()
-
-portfolio_data.sort(key=lambda l:l[0])
+        stock_data = stockquotes.Stock(stock)
+        portfolio_data.append([stock, portfolio[stock], stock_data.currentPrice])
 
 total = sum([ i[1]*i[2] for i in portfolio_data ]) + cash
 

@@ -1,13 +1,15 @@
 {
-	"GPRO": 10,
+	"ACES": 2.006,
+	"FNMA": 6,
+	"HERO": 2,
 	"HMNY": 10,
-	"JETS": 3,
-	"KR": 2,
-	"PCG": 3,
-	"RGR": 1,
-	"SGOL": 2,
-	"SIVR": 1,
-	"SYY": 1,
-	"USO": 8,
-	"CASH": 10.92
+	"MRNA": 1,
+	"NVAX": 1,
+	"PEJ": 2,
+	"PHAS": 3,
+	"SNAP": 2,
+	"VXRT": 2,
+	"XLF": 2,
+	"XLP": 1,
+	"CASH": 1.58
 }
