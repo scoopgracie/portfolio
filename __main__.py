@@ -66,24 +66,19 @@ portfolio_data.sort(key=lambda l:l[0])
 total = sum([ i[1]*i[2] for i in portfolio_data ]) + cash
 
 longest_qty = 3
+longest_stock = 5
+longest_last = 4
+longest_total = len(money(total)) if len(money(total)) > 5 else 5
 for stock in portfolio_data:
     length = len(money(stock[1]))
     longest_qty = length if length > longest_qty else longest_qty
-
-longest_stock = 5
-for stock in portfolio_data:
     length = len(stock[0])
     longest_stock = length if length > longest_stock else longest_stock
-
-longest_last = 4
-for stock in portfolio_data:
     length = len(money(stock[2]))
     longest_last = length if length > longest_last else longest_last
-
-longest_total = len(money(total)) if len(money(total)) > 5 else 5
-for stock in portfolio_data:
     length = len(money(stock[2]*stock[1]))
     longest_total = length if length > longest_total else longest_total
+
 headings = [ pada('Stock', longest_stock), pad('Qty', longest_qty), pad('Last', longest_last), pad('Total', longest_total), '%Total' ]
 header = '│{}│{}│{}│{}│{}│'.format(*headings)
 print('╭{}┬{}┬{}┬{}┬{}╮'.format( *[ ('─' * len(i)) for i in headings] ))
