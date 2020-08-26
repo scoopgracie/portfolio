@@ -1,15 +1,20 @@
 {
 	"ACES": 2.006,
+	"ALRN": 4,
+	"EBIZ": 2,
 	"FNMA": 6,
-	"HERO": 2,
+	"GOCO": 2,
+	"HERO": 2.001,
 	"HMNY": 10,
+	"JO": 1,
+	"MNOV": 4,
 	"MRNA": 1,
-	"NVAX": 1,
-	"PEJ": 2,
+	"PEJ": 2.001,
+	"PFE": 1,
 	"PHAS": 3,
+	"SGOL": 2,
 	"SNAP": 2,
-	"VXRT": 2,
-	"XLF": 2,
-	"XLP": 1,
-	"CASH": 1.58
+	"SYNL": 2,
+	"XLF": 2.013,
+	"_CASH_": 77.07
 }
